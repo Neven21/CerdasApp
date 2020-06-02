@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "745373329253",
+    "firebase_url": "https://cerdasappbyneven.firebaseio.com",
+    "project_id": "cerdasappbyneven",
+    "storage_bucket": "cerdasappbyneven.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745373329253:android:b0532503f4bd5c5d1f238c",
+        "android_client_info": {
+          "package_name": "com.example.cerdasappbyneven"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745373329253-ihmi02p7uurb7lu1i4emie5nl17c8t12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6-70hf6KDA8aEJpzGGKWMHZ9hQeoW71I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745373329253-ihmi02p7uurb7lu1i4emie5nl17c8t12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

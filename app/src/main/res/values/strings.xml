@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CerdasAppByNeven</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Settings</string>
+    <string name="title_notifications">Profile</string>
+
+    <string name="prompt">Choose Position</string>
+    <string-array name="positions_array">
+        <item>Coordinator and Lecturer</item>
+        <item>Lecturer</item>
+        <item>Head of Lab</item>
+        <item>Lab Coordinator</item>
+        <item>Lab Assistant</item>
+    </string-array>
+</resources>
