@@ -95,6 +95,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     Employees employee  = new Employees(id, nametest, emailtest, numbertest, position, subjecttest, classestest, salarytest, biotest);
                     myRef.child(id).setValue(employee);
                     Toast.makeText(AddEmployeeActivity.this,"Employee Added",Toast.LENGTH_SHORT).show();
+                    AddEmployeeActivity.this.finish();
                 }
             }
         });

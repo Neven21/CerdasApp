@@ -1,11 +1,14 @@
 package com.example.cerdasappbyneven.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +19,23 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.cerdasappbyneven.HomeActivity;
 import com.example.cerdasappbyneven.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     Button addemployeebtn;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    ListView listViewEmployee;
+    List<Employees> employeesList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +52,13 @@ public class HomeFragment extends Fragment {
 
         addemployeebtn = root.findViewById(R.id.addemployeebtn);
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("employees");
+
+        listViewEmployee = root.findViewById(R.id.listViewEmployee);
+
+        employeesList = new ArrayList<>();
+
         addemployeebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,5 +68,31 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                employeesList.clear();
+
+                for (DataSnapshot employeeSnapshot: dataSnapshot.getChildren()){
+                    Employees employee = employeeSnapshot.getValue(Employees.class);
+                    employeesList.add(employee);
+                }
+
+                EmployeeList adapter = new EmployeeList(getActivity(), employeesList);
+                listViewEmployee.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
