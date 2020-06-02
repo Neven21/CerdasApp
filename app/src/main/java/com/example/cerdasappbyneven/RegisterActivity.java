@@ -2,6 +2,8 @@ package com.example.cerdasappbyneven;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cerdasappbyneven.ui.notifications.NotificationsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnSignUp;
     TextView tvSignIn;
     FirebaseAuth auth;
-    String emailtest, passtest;
+    String emailtest, passtest, fullnametest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +44,32 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 emailtest = email.getText().toString();
                 passtest = password.getText().toString();
+                fullnametest = fullname.getText().toString();
                 if (emailtest.isEmpty()) {
                     email.setError("Please Enter Email");
                     email.requestFocus();
                 } else if (passtest.isEmpty()) {
                     password.setError("Please Enter Password");
                     password.requestFocus();
-                } else if (emailtest.isEmpty() && passtest.isEmpty()) {
+                } else if (fullnametest.isEmpty()) {
+                    password.setError("Please Enter Fullname");
+                    password.requestFocus();
+                } else if (emailtest.isEmpty() && passtest.isEmpty() && fullnametest.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Fields Can Not Be Empty", Toast.LENGTH_SHORT).show();
-                } else if (!(emailtest.isEmpty() && passtest.isEmpty())) {
+                } else if (!(emailtest.isEmpty() && passtest.isEmpty() && fullnametest.isEmpty())) {
                     auth.createUserWithEmailAndPassword(emailtest, passtest).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(RegisterActivity.this, MainActivity.class)); //HARUS DIGANTIIIIIIIIIIIIIII
+                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                intent.putExtra("fullname", fullnametest);
+                                startActivity(intent);
+                                RegisterActivity.this.finish();
+//                                Fragment fragment = new NotificationsFragment();
+//                                FragmentManager fragmentManager = getSupportFragmentManager();
+//                                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
                             }
                         }
                     });

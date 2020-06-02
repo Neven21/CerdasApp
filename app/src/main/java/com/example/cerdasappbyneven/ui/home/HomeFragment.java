@@ -50,6 +50,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Fragment fragment = getFragmentManager().findFragmentByTag("AdditionalFragment");
+        getFragmentManager().beginTransaction().remove(fragment).commit(); //error tp dh dapet null object ref kalo gaada if, brt dah msk fragmentnya???
+
         addemployeebtn = root.findViewById(R.id.addemployeebtn);
 
         database = FirebaseDatabase.getInstance();
