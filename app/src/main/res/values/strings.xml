@@ -13,4 +13,15 @@
         <item>Lab Coordinator</item>
         <item>Lab Assistant</item>
     </string-array>
+
+    <string-array name="viewmode_array">
+        <item>List</item>
+        <item>Grid</item>
+        <item>Card</item>
+    </string-array>
+
+    <string-array name="lanaguage_array">
+        <item>English</item>
+        <item>Bahasa Indonesia</item>>
+    </string-array>
 </resources>

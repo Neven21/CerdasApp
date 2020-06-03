@@ -119,8 +119,10 @@ public class HomeFragment extends Fragment {
                     employeesList.add(employee);
                 }
 
-                EmployeeList adapter = new EmployeeList(getActivity(), employeesList);
-                listViewEmployee.setAdapter(adapter);
+                if (getActivity()!=null) {
+                    EmployeeList adapter = new EmployeeList(getActivity(), employeesList);
+                    listViewEmployee.setAdapter(adapter);
+                }
             }
 
             @Override
