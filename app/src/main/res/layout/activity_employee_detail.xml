@@ -388,6 +388,23 @@
         app:layout_constraintVertical_bias="0.903" />
 
     <Button
+        android:id="@+id/deleteemployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Delete This Employee"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903" />
+
+    <Button
         android:id="@+id/editemployeebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

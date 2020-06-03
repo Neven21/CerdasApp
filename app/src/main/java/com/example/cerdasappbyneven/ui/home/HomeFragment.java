@@ -33,12 +33,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    Button addemployeebtn;
+    Button addemployeebtn, sortbtn;
     FirebaseDatabase database;
     DatabaseReference myRef;
     ListView listViewEmployee;
@@ -65,6 +66,7 @@ public class HomeFragment extends Fragment {
         }
 
         addemployeebtn = root.findViewById(R.id.addemployeebtn);
+        sortbtn = root.findViewById(R.id.sortbtn);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("employees");
@@ -89,6 +91,13 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
                 intent.putExtra("id", employee.getEmployeeId());
                 startActivity(intent);
+            }
+        });
+
+        sortbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.reverse(employeesList);
             }
         });
 
@@ -121,29 +130,29 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void showDialog(String employeeId, String name)
-    {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity()); //Context??
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.edit_employee_dialog, null);
-
-        dialogBuilder.setView(dialogView);
-
-        final TextView tvname = dialogView.findViewById(R.id.name);
-        final TextView position = dialogView.findViewById(R.id.position);
-        final TextView subject = dialogView.findViewById(R.id.subject);
-        final TextView bio = dialogView.findViewById(R.id.bio);
-        final TextView obligation = dialogView.findViewById(R.id.obligation);
-        final TextView salary = dialogView.findViewById(R.id.salary);
-        final TextView classes = dialogView.findViewById(R.id.classes);
-        final TextView email = dialogView.findViewById(R.id.email);
-        final TextView hp = dialogView.findViewById(R.id.hp);
-        final Button btnupdateemployee = dialogView.findViewById(R.id.editemployeebtn);
-
-        dialogBuilder.setTitle("Employee Detail"+employeeId);
-        AlertDialog alertDialog = dialogBuilder.create();
-        alertDialog.show();
-
-    }
+//    private void showDialog(String employeeId, String name)
+//    {
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity()); //Context??
+//        LayoutInflater inflater = getLayoutInflater();
+//        final View dialogView = inflater.inflate(R.layout.edit_employee_dialog, null);
+//
+//        dialogBuilder.setView(dialogView);
+//
+//        final TextView tvname = dialogView.findViewById(R.id.name);
+//        final TextView position = dialogView.findViewById(R.id.position);
+//        final TextView subject = dialogView.findViewById(R.id.subject);
+//        final TextView bio = dialogView.findViewById(R.id.bio);
+//        final TextView obligation = dialogView.findViewById(R.id.obligation);
+//        final TextView salary = dialogView.findViewById(R.id.salary);
+//        final TextView classes = dialogView.findViewById(R.id.classes);
+//        final TextView email = dialogView.findViewById(R.id.email);
+//        final TextView hp = dialogView.findViewById(R.id.hp);
+//        final Button btnupdateemployee = dialogView.findViewById(R.id.editemployeebtn);
+//
+//        dialogBuilder.setTitle("Employee Detail"+employeeId);
+//        AlertDialog alertDialog = dialogBuilder.create();
+//        alertDialog.show();
+//
+//    }
 
 }

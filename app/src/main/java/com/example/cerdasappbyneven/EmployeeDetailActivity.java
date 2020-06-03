@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.cerdasappbyneven.ui.home.Employees;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +28,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     TextView name, position, subject, bio, obligation, salary, classes, email, hp;
     EditText nameedit, positionedit, subjectedit, bioedit, salaryedit;
     CheckBox A, B, C, D;
-    Button editemployeebtn, savechangesbtn;
+    Button editemployeebtn, savechangesbtn, deletebtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
         editemployeebtn = findViewById(R.id.editemployeebtn);
         savechangesbtn = findViewById(R.id.saveeditemployee);
+        deletebtn = findViewById(R.id.deleteemployee);
         name = findViewById(R.id.name);
         position = findViewById(R.id.position);
         subject = findViewById(R.id.subject);
@@ -146,7 +149,67 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 classes.setVisibility(View.GONE);
                 editemployeebtn.setVisibility(View.GONE);
                 editemployeebtn.setClickable(false);
+                deletebtn.setVisibility(View.GONE);
+                deletebtn.setClickable(false);
 
+            }
+        });
+
+        savechangesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatabaseReference updatereference = FirebaseDatabase.getInstance().getReference("employees").child(id);
+
+                String nametest = nameedit.getText().toString();
+                String postest = positionedit.getText().toString();
+                String subjecttest = subjectedit.getText().toString();
+                String biotest = bioedit.getText().toString();
+                String salarytest = salaryedit.getText().toString();
+                String hptest = hp.getText().toString();
+                String emailtest = email.getText().toString();
+
+                StringBuilder classes = new StringBuilder();
+                if(A.isChecked())
+                {
+                    classes.append("A and AL");
+                }
+                if(B.isChecked())
+                {
+                    classes.append(", B and BL");
+                }
+                if(C.isChecked())
+                {
+                    classes.append(", C and CL");
+                }
+                if(D.isChecked())
+                {
+                    classes.append(", D and DL");
+                }
+
+                String classestest = classes.toString();
+
+                if(nametest.isEmpty() || postest.isEmpty() || subjecttest.isEmpty() || biotest.isEmpty() || salarytest.isEmpty() || hptest.isEmpty() || classestest.isEmpty())
+                {
+                    Toast.makeText(EmployeeDetailActivity.this,"All Fields Have To Be Filled",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Employees employee  = new Employees(id, nametest, emailtest, hptest, postest, subjecttest, classestest, salarytest, biotest);
+                    updatereference.setValue(employee);
+                    Toast.makeText(EmployeeDetailActivity.this,"Edit Successfull",Toast.LENGTH_SHORT).show();
+                    EmployeeDetailActivity.this.finish();
+                }
+            }
+        });
+
+        deletebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference deleteref = FirebaseDatabase.getInstance().getReference("employees").child(id);
+                deleteref.removeValue();
+                Toast.makeText(EmployeeDetailActivity.this,"Delete Successfull",Toast.LENGTH_SHORT).show();
+                EmployeeDetailActivity.this.finish();
             }
         });
     }
