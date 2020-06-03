@@ -1,5 +1,6 @@
 package com.example.cerdasappbyneven;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,9 @@ import androidx.navigation.ui.NavigationUI;
 
 public class HomeActivity extends AppCompatActivity {
 
+//    NotificationsFragment.OnDataPass dataPasser;
+    String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +31,14 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction t = manager.beginTransaction();
         NotificationsFragment profilefragment = new NotificationsFragment();
 
-//        Intent intent  = getIntent();
-//        String fullname = intent.getStringExtra("fullname");
-//        String email = intent.getStringExtra("email");
-//        Log.d("Fullnameeee", fullname);
+        Intent intent  = getIntent();
+        email = intent.getStringExtra("email");
 
-//        Bundle bundle = new Bundle();
-//        bundle.putString("fullname",fullname);
-//        bundle.putString("email",email);
-//        profilefragment.setArguments(bundle);
+        Bundle bundle = new Bundle();
+        bundle.putString("email",email);
+        profilefragment.setArguments(bundle);
 
-//        t.replace(R.id.nav_host_fragment,profilefragment,"AdditionalFragment");
+//        t.add(R.id.nav_host_fragment,profilefragment,"AdditionalFragment");
 //        t.addToBackStack(null);
 //        t.commit();
 
@@ -49,6 +50,15 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+    }
+
+//    @Override
+//    public void onDataPass(String data) {
+//        Log.d("LOG","hello " + data);
+//    }
+
+    public String getMyData() {
+        return email;
     }
 
 }

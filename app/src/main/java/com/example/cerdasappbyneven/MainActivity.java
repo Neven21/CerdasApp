@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else{
                                 Intent login = new Intent(MainActivity.this, HomeActivity.class);
+                                login.putExtra("email", emailtest);
                                 startActivity(login);
                                 MainActivity.this.finish();
                             }

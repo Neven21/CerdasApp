@@ -1,11 +1,13 @@
 package com.example.cerdasappbyneven.ui.home;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -19,6 +21,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.cerdasappbyneven.EditProfileActivity;
+import com.example.cerdasappbyneven.EmployeeDetailActivity;
 import com.example.cerdasappbyneven.HomeActivity;
 import com.example.cerdasappbyneven.R;
 import com.example.cerdasappbyneven.ui.notifications.NotificationsFragment;
@@ -77,6 +81,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Employees employee = employeesList.get(i);
+//                showDialog(employee.getEmployeeId(), employee.getName());
+                Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
+                intent.putExtra("id", employee.getEmployeeId());
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 
@@ -105,4 +120,30 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    private void showDialog(String employeeId, String name)
+    {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity()); //Context??
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.edit_employee_dialog, null);
+
+        dialogBuilder.setView(dialogView);
+
+        final TextView tvname = dialogView.findViewById(R.id.name);
+        final TextView position = dialogView.findViewById(R.id.position);
+        final TextView subject = dialogView.findViewById(R.id.subject);
+        final TextView bio = dialogView.findViewById(R.id.bio);
+        final TextView obligation = dialogView.findViewById(R.id.obligation);
+        final TextView salary = dialogView.findViewById(R.id.salary);
+        final TextView classes = dialogView.findViewById(R.id.classes);
+        final TextView email = dialogView.findViewById(R.id.email);
+        final TextView hp = dialogView.findViewById(R.id.hp);
+        final Button btnupdateemployee = dialogView.findViewById(R.id.editemployeebtn);
+
+        dialogBuilder.setTitle("Employee Detail"+employeeId);
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+    }
+
 }

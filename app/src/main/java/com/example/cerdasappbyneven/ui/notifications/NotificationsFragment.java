@@ -1,10 +1,13 @@
 package com.example.cerdasappbyneven.ui.notifications;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,15 +18,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.cerdasappbyneven.EditProfileActivity;
+import com.example.cerdasappbyneven.HomeActivity;
 import com.example.cerdasappbyneven.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     TextView name, position, subject, bio, obligation, salary, classes, email, hp;
-    EditText nameedit, positionedit, subjectedit, bioedit, salaryedit, hpedit;
-    CheckBox A, B, C, D;
+    Button editbtn;
+//    NotificationsFragment.OnDataPass dataPasser;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +48,7 @@ public class NotificationsFragment extends Fragment {
             }
         });
 
+        editbtn = root.findViewById(R.id.editprofilebtn);
         name = root.findViewById(R.id.name);
         position = root.findViewById(R.id.position);
         subject = root.findViewById(R.id.subject);
@@ -48,49 +59,89 @@ public class NotificationsFragment extends Fragment {
         email = root.findViewById(R.id.email);
         hp = root.findViewById(R.id.hp);
 
-        nameedit = root.findViewById(R.id.nameedit);
-        positionedit = root.findViewById(R.id.positionedit);
-        subjectedit = root.findViewById(R.id.subjectedit);
-        bioedit = root.findViewById(R.id.bioedit);
-        salaryedit = root.findViewById(R.id.salaryedit);
-        hpedit = root.findViewById(R.id.hpedit);
+        HomeActivity activity = (HomeActivity) getActivity();
+        final String emailfragmenttest = activity.getMyData();
 
-        A = root.findViewById(R.id.checkboxA);
-        B = root.findViewById(R.id.checkboxB);
-        C = root.findViewById(R.id.checkboxC);
-        D = root.findViewById(R.id.checkboxD);
+        Log.d("Email TESTT in fragment", emailfragmenttest);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("employees");
+
+        reference.orderByChild("email").equalTo(emailfragmenttest).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot datas: dataSnapshot.getChildren()){
+                    String namedata = datas.child("name").getValue().toString();
+                    String posdata = datas.child("position").getValue().toString();
+                    String subdata = datas.child("subject").getValue().toString();
+                    String biodata = datas.child("bio").getValue().toString();
+                    String salarydata = datas.child("salary").getValue().toString();
+                    String classesdata = datas.child("classes").getValue().toString();
+                    String emaildata = datas.child("email").getValue().toString();
+                    String hpdata = datas.child("number").getValue().toString();
+
+                    name.setText(namedata);
+                    position.setText(posdata);
+                    subject.setText(subdata);
+                    bio.setText(biodata);
+                    salary.setText(salarydata);
+                    classes.setText(classesdata);
+                    email.setText(emaildata);
+                    hp.setText(hpdata);
+
+                    if(posdata.equals("Coordinator and Lecturer"))
+                    {
+                        obligation.setText("UMN");
+                    }
+                    else if(posdata.equals("Lecturer"))
+                    {
+                        obligation.setText("Coordinator and Lecturer");
+                    }
+                    else if(posdata.equals("Head of Lab"))
+                    {
+                        obligation.setText("UMN");
+                    }
+                    else if(posdata.equals("Lab Coordinator"))
+                    {
+                        obligation.setText("Head of Lab");
+                    }
+                    else if(posdata.equals("Lab Assistant"))
+                    {
+                        obligation.setText("Lab Coordinator");
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
 
         Bundle bundle = this.getArguments();
         if(getArguments() != null) {
-            String fullnamefragment = bundle.getString("fullname");
             String emailfragment = bundle.getString("email");
-            Log.d("Fullname IN FRAGMENTTTT", fullnamefragment);
-            name.setText(fullnamefragment);
-            email.setText(emailfragment);
-
-            position.setVisibility(View.INVISIBLE);
-            subject.setVisibility(View.INVISIBLE);
-            bio.setVisibility(View.INVISIBLE);
-            obligation.setVisibility(View.INVISIBLE);
-            salary.setVisibility(View.INVISIBLE);
-            classes.setVisibility(View.INVISIBLE);
-            hp.setVisibility(View.INVISIBLE);
-
-            positionedit.setVisibility(View.VISIBLE);
-            subjectedit.setVisibility(View.VISIBLE);
-            bioedit.setVisibility(View.VISIBLE);
-            salaryedit.setVisibility(View.VISIBLE);
-            hpedit.setVisibility(View.VISIBLE);
-
-            A.setVisibility(View.VISIBLE);
-            B.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            D.setVisibility(View.VISIBLE);
-
+            Log.d("Email in fragment", emailfragment);
 
         }
 
+        editbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                intent.putExtra("email", emailfragmenttest);
+                startActivity(intent);
+            }
+        });
 
         return root;
     }
+
+//    public interface OnDataPass {
+//        public void onDataPass(String data);
+//    }
+
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        dataPasser = (NotificationsFragment.OnDataPass) context;
+//    }
 }
