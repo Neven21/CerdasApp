@@ -4,138 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".InitialEditActivity">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="name"
-        android:visibility="visible"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/nameedit"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
+        android:layout_width="412dp"
+        android:layout_height="77dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:inputType="text"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/position"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="position"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <EditText
         android:id="@+id/positionedit"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
+        android:layout_width="408dp"
+        android:layout_height="49dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:hint="Your Position"
+        android:inputType="text"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
-
-    <TextView
-    android:id="@+id/subject"
-    android:layout_width="413dp"
-    android:layout_height="32dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:text="subject"
-    android:textAlignment="center"
-    android:textSize="20sp" android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.9"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <EditText
         android:id="@+id/subjectedit"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
+        android:layout_width="414dp"
+        android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:hint="Subject"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
-
-    <TextView
-        android:id="@+id/bio"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="bio"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <EditText
         android:id="@+id/bioedit"
-        android:layout_width="413dp"
-        android:layout_height="32dp"
+        android:layout_width="410dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:hint="Your Bio"
         android:inputType="text|textMultiLine"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.306" />
 
     <TextView
         android:id="@+id/obligationtext"
@@ -160,7 +97,7 @@
         android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Obligation"
+        android:text="No Data Yet"
         android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="visible"
@@ -170,6 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.466" />
+
 
     <TextView
         android:id="@+id/salarytext"
@@ -186,34 +124,17 @@
         app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
-
-    <TextView
-        android:id="@+id/salary"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Salary"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintVertical_bias="0.414" />
 
     <EditText
         android:id="@+id/salaryedit"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:inputType="number"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.938"
@@ -222,29 +143,12 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-    android:id="@+id/classestext"
-    android:layout_width="141dp"
-    android:layout_height="28dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:text="Classes I teach"
-    android:textAlignment="center"
-    android:textSize="20sp"
-        android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.517" />
-
-    <TextView
-        android:id="@+id/classes"
+        android:id="@+id/classestext"
         android:layout_width="141dp"
         android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Classes"
+        android:text="Classes I teach"
         android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="visible"
@@ -253,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.517" />
 
 
     <CheckBox
@@ -341,27 +245,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.654" />
 
-    <TextView
-        android:id="@+id/hp"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Nohp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
-
     <EditText
         android:id="@+id/hpedit"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
+        android:layout_width="154dp"
+        android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:inputType="number"
@@ -372,7 +259,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <Button
         android:id="@+id/editprofilebtn"
@@ -380,7 +267,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Edit Profile"
+        android:text="Add Profile Data"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

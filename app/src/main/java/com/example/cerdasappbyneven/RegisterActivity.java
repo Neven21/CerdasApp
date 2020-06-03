@@ -63,8 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this, InitialEditActivity.class);
                                 intent.putExtra("fullname", fullnametest);
+                                intent.putExtra("email", emailtest);
                                 startActivity(intent);
                                 RegisterActivity.this.finish();
 //                                Fragment fragment = new NotificationsFragment();

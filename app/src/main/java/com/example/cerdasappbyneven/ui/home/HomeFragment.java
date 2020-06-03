@@ -14,11 +14,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.cerdasappbyneven.HomeActivity;
 import com.example.cerdasappbyneven.R;
+import com.example.cerdasappbyneven.ui.notifications.NotificationsFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,8 +53,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Fragment fragment = getFragmentManager().findFragmentByTag("AdditionalFragment");
-        getFragmentManager().beginTransaction().remove(fragment).commit(); //error tp dh dapet null object ref kalo gaada if, brt dah msk fragmentnya???
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction t = manager.beginTransaction();
+
+        if(getActivity().getSupportFragmentManager().findFragmentByTag("AdditionalFragment") != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().remove(getActivity().getSupportFragmentManager().findFragmentByTag("AdditionalFragment")).commit();
+        }
 
         addemployeebtn = root.findViewById(R.id.addemployeebtn);
 

@@ -27,16 +27,19 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction t = manager.beginTransaction();
         NotificationsFragment profilefragment = new NotificationsFragment();
 
-        Intent intent  = getIntent();
-        String fullname = intent.getStringExtra("fullname");
-        Log.d("Fullnameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", fullname);
+//        Intent intent  = getIntent();
+//        String fullname = intent.getStringExtra("fullname");
+//        String email = intent.getStringExtra("email");
+//        Log.d("Fullnameeee", fullname);
 
-        Bundle bundle = new Bundle();
-        bundle.putString("fullname",fullname);
-        profilefragment.setArguments(bundle);
-        t.replace(R.id.nav_host_fragment,profilefragment,"AdditionalFragment");
-        t.addToBackStack(null);
-        t.commit();
+//        Bundle bundle = new Bundle();
+//        bundle.putString("fullname",fullname);
+//        bundle.putString("email",email);
+//        profilefragment.setArguments(bundle);
+
+//        t.replace(R.id.nav_host_fragment,profilefragment,"AdditionalFragment");
+//        t.addToBackStack(null);
+//        t.commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
