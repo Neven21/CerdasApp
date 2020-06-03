@@ -108,6 +108,8 @@ public class InitialEditActivity extends AppCompatActivity {
                     myRef.child(id).setValue(employee);
                     Toast.makeText(InitialEditActivity.this,"Your Profile Is Added",Toast.LENGTH_SHORT).show();
 
+                    PreferenceData.setUserLoggedInStatus(InitialEditActivity.this, true);
+                    PreferenceData.setLoggedInUserEmail(InitialEditActivity.this, emailtest);
                     Intent intent = new Intent(InitialEditActivity.this, HomeActivity.class);
                     intent.putExtra("email", emailtest);
                     startActivity(intent);

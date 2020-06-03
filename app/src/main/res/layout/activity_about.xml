@@ -7,10 +7,25 @@
     tools:context=".AboutActivity">
 
     <TextView
+        android:id="@+id/soal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
         android:id="@+id/jawaban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About Cerdas App By Neven - 25750"
+        android:text="About Cerdas App By Neven - 00000025750 Click The Button Below"
         android:textSize="20dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +39,7 @@
         android:id="@+id/nextbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="128dp"
         android:ems="10"
         android:text="Next Part"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +53,7 @@
         android:id="@+id/backbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="128dp"
         android:ems="10"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"

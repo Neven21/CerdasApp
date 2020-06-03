@@ -2,8 +2,8 @@
     <string name="app_name">CerdasAppByNeven</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Settings</string>
-    <string name="title_notifications">Profile</string>
+    <string name="title_dashboard">App Settings</string>
+    <string name="title_notifications">Your Profile</string>
 
     <string name="prompt">Choose Position</string>
     <string-array name="positions_array">
