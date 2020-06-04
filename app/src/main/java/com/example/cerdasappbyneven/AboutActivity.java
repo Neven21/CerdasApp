@@ -40,7 +40,9 @@ public class AboutActivity extends AppCompatActivity {
                 else if(flag==2)
                 {
                     soal.setText("Proses Pembuatan Aplikasi");
-                    jawaban.setText("...");
+                    jawaban.setText("Proses pembuatan aplikasi meliputi pemahaman soal dan requirement projek yang dibutuhkan. Lalu implementasi langsung mulai dilakukan." +
+                            " Implementasi dimulai dari melakukan pengaturan implementasi Firebase dan pengaturan dependencies tambahan untuk database dan navigasi, lalu langsung dilanjutkan" +
+                            " dengan coding. Setelah selesai, dilakukan debugging untuk menemukan dan memperbaiki kesalahan yang ada.");
                 }
                 else if(flag==3)
                 {

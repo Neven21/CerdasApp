@@ -5,6 +5,11 @@ android {
     compileSdkVersion 28
 
 
+    lintOptions {
+
+        checkReleaseBuilds false
+
+    }
     defaultConfig {
         applicationId "com.example.cerdasappbyneven"
         minSdkVersion 21
